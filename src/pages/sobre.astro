@@ -1,48 +1,36 @@
-<html lang="pt-BR">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Fale Conosco | TED System</title>
-	</head>
-	<body>
-		<header>
-			<strong>TED System</strong>
-			<nav>
-				<ul>
-					<li><a href="/">Início</a></li>
-					<li><a href="/sobre">Sobre</a></li>
-					<li><a href="/equipe">Equipe</a></li>
-					<li><a href="/contato">Contato</a></li>
-				</ul>
-			</nav>
-		</header>
+---
+import LayoutBase from '../layouts/LayoutBase.astro';
+import { empresa } from '../data/empresa.js';
+---
 
-		<main>
-			<section>
-				<h1>Fale Conosco</h1>
-				<p>Deseja construir uma solução de software sob medida para o seu negócio? Entre em contato com a TED System!</p>
-			</section>
+<LayoutBase 
+	titulo="Sobre Nós" 
+	descricao={`Conheça a história e os valores da ${empresa.nome}.`}
+>
+	<section>
+		<h1>Sobre a {empresa.nome}</h1>
+		<p>{empresa.historia}</p>
+	</section>
 
-			<section>
-				<h2>Nossa Sede</h2>
-				<address>
-					Rua Coronel Simplício, 250, Sala 12<br />
-					Centro<br />
-					Piripiri, PI<br />
-					CEP: 64260-000
-				</address>
-			</section>
+	<section>
+		<h2>Missão</h2>
+		<p>{empresa.missao}</p>
+	</section>
 
-			<section>
-				<h2>Canais Digitais</h2>
-				<p><strong>E-mail:</strong> <a href="mailto:contato@tedsystem.com.br">contato@tedsystem.com.br</a></p>
-				<p><strong>Telefone:</strong> (86) 3276-0042</p>
-			</section>
-		</main>
+	<section>
+		<h2>Visão</h2>
+		<p>{empresa.visao}</p>
+	</section>
 
-		<footer>
-			<p>&copy; 2026 TED System. Todos os direitos reservados.</p>
-		</footer>
-	</body>
-</html>
+	<section>
+		<h2>Nossos Valores</h2>
+		<ul>
+			{empresa.valores.map((valor) => (
+				<li>
+					<h3>{valor.titulo}</h3>
+					<p>{valor.descricao}</p>
+				</li>
+			))}
+		</ul>
+	</section>
+</LayoutBase>
